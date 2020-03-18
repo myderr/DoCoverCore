@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "安装步骤(2/4)";
+    Layout = "~/Views/Shared/_InstallLayout.cshtml";
+}
+<style>
+    dd, dt, li, p {
+        padding-bottom: 2px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+    body {
+        background-color: #f1f1f1;
+    }
+
+    .layui-col-md8 {
+        background-color: #ffffff;
+        padding: 30px 30px 0px;
+        margin-top: 10px;
+    }
+
+    .layui-form-label {
+        padding-left: 0px;
+        text-align: left;
+    }
+
+    .layui-col-md5 {
+        padding-right: 10px;
+    }
+
+    .required:before {
+        content: '*';
+        color: red;
+        font-size: 10px;
+    }
+</style>
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>设置资料</legend>
+</fieldset>
+<h2>欢迎</h2>
+<fieldset class="layui-elem-field layui-field-title"></fieldset>
+<p>欢迎使用著名的WordPress五分钟安装程序！请简单地填写下面的表格，来开始使用这个世界上最具扩展性、最强大的个人信息发布平台。</p>
+
+<h2>需要信息</h2>
+<fieldset class="layui-elem-field layui-field-title"></fieldset>
+<p>您需要填写一些基本信息。无需担心填错，这些信息以后可以再次修改。</p>
+<div class="layui-row">
+    <div class="layui-form-item">
+        <div class="layui-col-xs12 layui-col-md2">
+            <label class="layui-form-label required">站点标题</label>
+        </div>
+        <div class="layui-col-xs12 layui-col-md5">
+            <input type="text" name="title" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+        </div>
+        <div class="layui-col-xs12 layui-col-md5">
+            <div class="layui-form-mid layui-word-aux"> 您的站点所展示的标题</div>
+        </div>
+    </div>
+</div>

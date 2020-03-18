@@ -1,0 +1,346 @@
+﻿
+@{
+    Layout = null;
+    ViewData["Title"] = $"安装步骤({ViewBag.Progress}/4)";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link href="~/lib/layui-src/dist/css/layui.css" rel="stylesheet" />
+    <style>
+        dd, dt, li, p {
+            padding-bottom: 2px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+
+        body {
+            background-color: #f1f1f1;
+        }
+
+        .layui-col-md8 {
+            background-color: #ffffff;
+            padding: 30px 30px 0px;
+            margin-top: 10px;
+        }
+
+        .layui-form-label {
+            padding-left: 0px;
+            text-align: left;
+        }
+
+        .layui-col-md5 {
+            padding-right: 10px;
+        }
+
+        .required:before {
+            content: '*';
+            color: red;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 170px;margin: auto"><h1>@ViewData["Title"]</h1></div>
+    <div class="layui-container">
+        <div class="layui-row">
+            @switch (ViewBag.Progress)
+            {
+                case 1:
+                    {
+            <div class="layui-col-xs12 layui-col-md8 layui-col-md-offset2">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend>配置数据库</legend>
+                </fieldset>
+                <form class="layui-form" action="@Url.Action("LinkDb")">
+                    <div class="layui-row">
+                        <div class="layui-form-item">
+                            <div class="layui-col-xs12 layui-col-md2">
+                                <label class="layui-form-label required">选择数据库</label>
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <select lay-verify="required" name="db" lay-filter="page1_db">
+                                    <option value="1" selected="selected">Mysql(推荐)</option>
+                                    <option value="2">SqlServer</option>
+                                    <option value="3">PostgreSQL</option>
+                                </select>
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <div class="layui-form-mid layui-word-aux"> 请选择您期望安装的数据库类型</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div class="layui-form-item">
+                            <div class="layui-col-xs12 layui-col-md2">
+                                <label class="layui-form-label required">数据库名</label>
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <input type="text" name="database" value="docover" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <div class="layui-form-mid layui-word-aux"> 希望将DoCover安装到的数据库名称。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div class="layui-form-item">
+                            <div class="layui-col-xs12 layui-col-md2">
+                                <label class="layui-form-label required">用户名</label>
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <input type="text" name="userId" value="root" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <div class="layui-form-mid layui-word-aux"> 您的数据库用户名。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div class="layui-form-item">
+                            <div class="layui-col-xs12 layui-col-md2">
+                                <label class="layui-form-label required">密码</label>
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <input type="password" name="pwd" value="root" lay-verify="required" placeholder="请输入" autocomplete="new-password" class="layui-input">
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <div class="layui-form-mid layui-word-aux"> 您的数据库密码。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div class="layui-form-item">
+                            <div class="layui-col-xs12 layui-col-md2">
+                                <label class="layui-form-label required">数据库主机</label>
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <input type="text" name="ip" value="localhost" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <div class="layui-form-mid layui-word-aux"> 您通常可以从网站服务提供商处得到信息。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div class="layui-form-item">
+                            <div class="layui-col-xs12 layui-col-md2">
+                                <label class="layui-form-label required">数据库端口</label>
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <input type="text" id="port" name="port" value="3306" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <div class="layui-form-mid layui-word-aux"><span id="port-text"> Mysql的默认端口为3306</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div class="layui-form-item">
+                            <div class="layui-col-xs12 layui-col-md2">
+                                <label class="layui-form-label">表前缀</label>
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <input type="text" name="bef" value="do_" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <div class="layui-form-mid layui-word-aux"> 如果您希望在同一个数据库安装多个DoCover，请修改前缀。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-btn-container" style="text-align: right;">
+                            <button class="layui-btn" lay-submit="" lay-filter="page1_next">下一步</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+                        break;
+                    }
+                case 2:
+                    {
+            <div class="layui-col-xs12 layui-col-md8 layui-col-md-offset2">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend>设置资料</legend>
+                </fieldset>
+                <h2>欢迎</h2>
+                <fieldset class="layui-elem-field layui-field-title"></fieldset>
+                <p>欢迎使用DoCover安装程序！请简单地填写下面的表格，来开始使用这个系统。</p>
+
+                <h2>需要信息</h2>
+                <fieldset class="layui-elem-field layui-field-title"></fieldset>
+                <p>您需要填写一些基本信息。无需担心填错，这些信息以后可以再次修改。</p>
+                <form class="layui-form" action="@Url.Action("SetInfo")">
+                    <div class="layui-row">
+                        <div class="layui-form-item">
+                            <div class="layui-col-xs12 layui-col-md2">
+                                <label class="layui-form-label required">站点标题</label>
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <input type="text" name="title" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+                            </div>
+                            <div class="layui-col-xs12 layui-col-md5">
+                                <div class="layui-form-mid layui-word-aux"> 您的站点所展示的标题</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-btn-container">
+                            <div class="layui-row">
+                                <div class="layui-col-md4" style="text-align: left">
+                                    <a href="?progress=1" class="layui-btn" lay-submit="" lay-filter="page2_previous">上一步</a>
+                                </div>
+                                <div class="layui-col-md4 layui-col-md-offset4" style="text-align: right">
+                                    <button class="layui-btn" lay-submit="" lay-filter="page2_next">下一步</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            break;
+            }
+            case 3:
+            {
+            <div class="layui-col-xs12 layui-col-md8 layui-col-md-offset2">
+                <div class="layui-form-item">
+                    <div class="layui-btn-container">
+                        <div class="layui-row">
+                            <div class="layui-col-md4" style="text-align: left">
+                                <a href="?progress=2" class="layui-btn" lay-submit="" lay-filter="page2_previous">上一步</a>
+                            </div>
+                            <div class="layui-col-md4 layui-col-md-offset4" style="text-align: right">
+                                <button class="layui-btn" lay-submit="" lay-filter="page2_next">下一步</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        break;
+                    }
+                case 4:
+                    {
+            <div class="layui-col-xs12 layui-col-md8 layui-col-md-offset2">
+                <div class="layui-form-item">
+                    <div class="layui-btn-container">
+                        <div class="layui-row">
+                            <div class="layui-col-md4" style="text-align: left">
+                                <a href="?progress=3" class="layui-btn" lay-submit="" lay-filter="page2_previous">上一步</a>
+                            </div>
+                            <div class="layui-col-md4 layui-col-md-offset4" style="text-align: right">
+                                <button class="layui-btn" lay-submit="" lay-filter="page2_next">下一步</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        break;
+                    }
+            }
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/layui-src/dist/layui.js" charset="utf-8"></script>
+    <script>
+        layui.use(['form', 'layedit', 'laydate'],
+            function () {
+                var form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
+                form.on('select(page1_db)', function (data) {
+                    switch (data.value) {
+                        case "1":
+                            $('#port').val('3306'); $('#port-text').html(' Mysql的默认端口为3306'); break;
+                        case "2":
+                            $('#port').val('1433'); $('#port-text').html(' SqlServer的默认端口为1433'); break;
+                        case "3":
+                            $('#port').val('5432'); $('#port-text').html(' PostgreSQL的默认端口为5432'); break;
+                    }
+                });
+
+                //监听提交
+                form.on('submit(page1_next)', function (data) {
+                    var action = $(data.form).attr("action"), button = $(data.elem);
+                    var index = layer.load();
+                    $.ajax({
+                        url: action,
+                        type: "post",
+                        data: data.field,
+                        success: function (res) {
+                            layer.close(index);
+                            if (res.code === 200)
+                                layer.msg(res.message, { time: 1000 }, function () {
+                                    location.href = "/Install/Index?progress=2";
+                                });
+                            else
+                                layer.alert(res.message, { title: '错误提示' });
+                        },
+                        error: function () {
+                            layer.close(index);
+                            layer.msg("链接服务器失败！");
+                        }
+                    });
+                    return false;
+                });
+                form.on('submit(page2_next)', function (data) {
+                    var action = $(data.form).attr("action"), button = $(data.elem);
+                    var index = layer.load();
+                    $.ajax({
+                        url: action,
+                        type: "post",
+                        data: data.field,
+                        success: function (res) {
+                            layer.close(index);
+                            if (res.code === 200)
+                                layer.msg(res.message, { time: 1000 }, function () {
+                                    location.href = "/Install/Index?progress=3";
+                                });
+                            else
+                                layer.alert(res.message, { title: '错误提示' });
+                        },
+                        error: function () {
+                            layer.close(index);
+                            layer.msg("链接服务器失败！");
+                        }
+                    });
+                    return false;
+                });
+                form.on('submit(page3_next)', function (data) {
+                    var action = $(data.form).attr("action"), button = $(data.elem);
+                    var index = layer.load();
+                    $.ajax({
+                        url: action,
+                        type: "post",
+                        data: data.field,
+                        success: function (res) {
+                            layer.close(index);
+                            if (res.code === 200)
+                                layer.msg(res.message, { time: 1000 }, function () {
+                                    location.href = "/Install/Index?progress=4";
+                                });
+                            else
+                                layer.alert(res.message, { title: '错误提示' });
+                        },
+                        error: function () {
+                            layer.close(index);
+                            layer.msg("链接服务器失败！");
+                        }
+                    });
+                    return false;
+                });
+            });
+    </script>
+</body>
+</html>
