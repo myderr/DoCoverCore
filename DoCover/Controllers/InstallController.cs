@@ -2,6 +2,7 @@
 #pragma warning disable 169
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using DoCover.Common;
 using DoCover.Entitys;
@@ -63,7 +64,7 @@ namespace DoCover.Controllers
                 _options.Value.DbType = db;
                 _options.Value.TablePrefix = bef;
                 if (_evn.IsDevelopment())
-                    _options.Value.SetAppSettingValue("C:\\Users\\myder\\Source\\Repos\\DoCover\\DoCover\\appsettings.json");
+                    _options.Value.SetAppSettingValue(Directory.GetCurrentDirectory() + "\\appsettings.json");
                 else
                     _options.Value.SetAppSettingValue();
 
