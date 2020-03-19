@@ -37,7 +37,7 @@ namespace DoCover.Entitys
         /// <summary>
         /// 昵称
         /// </summary>
-        [SugarColumn(IsNullable = false, Length = 30)]
+        [SugarColumn(IsNullable = true, Length = 30)]
         public string NickName { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace DoCover.Entitys
         /// 注册时间
         /// </summary>
         [SugarColumn(IsNullable = true)]
-        public DateTime RegTime { get; set; }
+        public DateTime? RegTime { get; set; }
 
         /// <summary>
         /// 注册ip
@@ -86,7 +86,7 @@ namespace DoCover.Entitys
         /// 最后登录时间
         /// </summary>
         [SugarColumn(IsNullable = true)]
-        public DateTime LastLoginTime { get; set; }
+        public DateTime? LastLoginTime { get; set; }
 
         /// <summary>
         /// 最后登录ip
@@ -98,7 +98,7 @@ namespace DoCover.Entitys
         /// 最后修改时间
         /// </summary>
         [SugarColumn(IsNullable = true)]
-        public DateTime LastUpdateTime { get; set; }
+        public DateTime? LastUpdateTime { get; set; }
 
         /// <summary>
         /// 最后修改ip

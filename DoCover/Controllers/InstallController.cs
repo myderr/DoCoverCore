@@ -33,6 +33,13 @@ namespace DoCover.Controllers
         public IActionResult Index(int progress = 1)
         {
             ViewBag.Progress = progress;
+            if (_progress > 1)//大于第一步，有公钥了
+            {
+                var dbContext = new MysqlContext(_options);
+                string publicKey = dbContext.Setting.GetValueByKeyId(EnumSet.PublicKey).Value;
+                ViewBag.PublicKey = publicKey;
+            }
+
             if (_progress >= progress)
                 return View();
             else
@@ -79,16 +86,19 @@ namespace DoCover.Controllers
             }
         }
 
-        public async Task<IActionResult> SetInfo(string title)
+        public async Task<IActionResult> SetInfo(string title,string adminName,string adminPwd,string adminEmail)
         {
             try
             {
                 var dbContext = new MysqlContext(_options);
                 List<Setting> sets = new List<Setting>()
                 {
-                    new Setting(EnumSet.WebsiteName,title)
+                    new Setting(EnumSet.WebsiteName,title),
+                    new Setting(EnumSet.WebsiteAdminEmail,adminEmail)
                 };
                 await dbContext.Setting.AsUpdateable(sets)
+                    .ExecuteCommandAsync();
+                await dbContext.User.AsInsertable(new User() {Name = adminName,Pwd = adminPwd,Type = 0})
                     .ExecuteCommandAsync();
                 _progress = 3;
                 return Json(new Response(200, "设置成功"));
