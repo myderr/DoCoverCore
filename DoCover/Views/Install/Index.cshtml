@@ -240,7 +240,7 @@
                                     <div class="layui-btn-container">
                                         <div class="layui-row">
                                             <div class="layui-col-md4" style="text-align: left">
-                                                <a href="?progress=1" class="layui-btn" lay-submit="" lay-filter="page2_previous">上一步</a>
+                                                <a href="?progress=1" class="layui-btn" lay-filter="page2_previous">上一步</a>
                                             </div>
                                             <div class="layui-col-md4 layui-col-md-offset4" style="text-align: right">
                                                 <button class="layui-btn" lay-submit="" lay-filter="page2_next">下一步</button>
@@ -294,9 +294,9 @@
     </div>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/layui-src/dist/layui.js" charset="utf-8"></script>
-    <script src="~/lib/jsencrypt/dist/bin/jsencrypt.js"></script>
+    <script src="~/lib/jsencrypt/dist/jsencrypt.js"></script>
     <script>
-    var do_publicKey = '-----BEGIN PUBLIC KEY-----@ViewBag.PublicKey-----END PUBLIC KEY-----';
+    var do_publicKey = '-----BEGIN PUBLIC KEY-----@Html.Raw(ViewBag.PublicKey)-----END PUBLIC KEY-----';
     layui.use(['form', 'layedit', 'laydate'],
         function () {
             var form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;

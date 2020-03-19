@@ -63,7 +63,8 @@ namespace DoCover.Entitys
             Db.CodeFirst.InitTables(typeof(User), typeof(Order), typeof(Setting));
             if (!this.User.IsAny(m => true))
             {
-
+                await User.AsInsertable(new User() { Name = "admin", Pwd = "admin", Type = 0 })
+                    .ExecuteCommandAsync();
             }
 
             if (!this.Setting.IsAny(m => true))

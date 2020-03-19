@@ -25,7 +25,7 @@ namespace DoCover.Entitys
         /// <summary>
         /// 密码
         /// </summary>
-        [SugarColumn(IsNullable = false, Length = 32)]
+        [SugarColumn(ColumnDataType = "text",IsNullable = false)]
         public string Pwd { get; set; }
 
         /// <summary>

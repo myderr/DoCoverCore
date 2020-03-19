@@ -22,7 +22,7 @@ namespace DoCover.Controllers
         private readonly IOptionsSnapshot<DoOptions> _options;
         private readonly IWebHostEnvironment _evn;
 
-        private static int _progress = 2;
+        private static int _progress = 1;
 
         public InstallController(ILogger<InstallController> logger,IOptionsSnapshot<DoOptions> options, IWebHostEnvironment evn)
         {
@@ -35,9 +35,13 @@ namespace DoCover.Controllers
             ViewBag.Progress = progress;
             if (_progress > 1)//大于第一步，有公钥了
             {
-                var dbContext = new MysqlContext(_options);
-                string publicKey = dbContext.Setting.GetValueByKeyId(EnumSet.PublicKey).Value;
-                ViewBag.PublicKey = publicKey;
+                try
+                {
+                    var dbContext = new MysqlContext(_options);
+                    string publicKey = dbContext.Setting.GetValueByKeyId(EnumSet.PublicKey).Value;
+                    ViewBag.PublicKey = publicKey;
+                }
+                catch { }
             }
 
             if (_progress >= progress)
@@ -98,7 +102,7 @@ namespace DoCover.Controllers
                 };
                 await dbContext.Setting.AsUpdateable(sets)
                     .ExecuteCommandAsync();
-                await dbContext.User.AsInsertable(new User() {Name = adminName,Pwd = adminPwd,Type = 0})
+                await dbContext.User.AsUpdateable(new User() { UserId = 1, Name = adminName, Pwd = adminPwd, Type = 0 })
                     .ExecuteCommandAsync();
                 _progress = 3;
                 return Json(new Response(200, "设置成功"));
