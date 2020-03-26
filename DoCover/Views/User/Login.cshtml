@@ -1,0 +1,92 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>中联可视化布局-登录</title>
+    <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+    <meta name="author" content="Vincent Garreau" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" media="screen" href="~/login/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/login/css/reset.css" />
+</head>
+<body>
+
+    <div id="particles-js">
+        <div class="login">
+            <div class="login-top">
+                中联可视化布局
+            </div>
+            <div class="login-center clearfix">
+                <div class="login-center-img">
+                    <img src="~/login/img/name.png" alt="" />
+                </div>
+                <div class="login-center-input">
+                    <input type="text" name="" value="" placeholder="请输入您的用户名" class="name" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的用户名'" />
+                    <div class="login-center-input-text">用户名</div>
+                </div>
+            </div>
+            <div class="login-center clearfix">
+                <div class="login-center-img"><img src="~/login/img/password.png" /></div>
+                <div class="login-center-input">
+                    <input type="password" name="" value="" placeholder="请输入您的密码" class="password" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的密码'" />
+                    <div class="login-center-input-text">密码</div>
+                </div>
+            </div>
+            <div class="login-button">
+                登录
+            </div>
+        </div>
+        <div class="sk-rotating-plane"></div>
+    </div>
+
+    <!-- scripts -->
+    <script src="~/login/js/particles.min.js"></script>
+    <script src="~/login/js/app.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/layui-src/dist/layui.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".password").keypress(function (e) {
+                if (e.which === 13) {
+                    $(".login-button").click();
+                }
+            });
+        });
+        layui.use('layer', function() {
+            var layer = layui.layer;
+            $(".login-button").click(function () {
+                var name = $(".name").val().trim();
+                var pwd = $(".password").val().trim();
+                if (name == undefined || name.length === 0 || pwd == undefined || pwd.length === 0) {
+                    layer.msg('请填写正确的账号密码');
+                    return;
+                }
+                var data = { Account: name, Password: pwd };
+                $.ajax({
+                    url: '/Api/User/SignIn',
+                    type: 'post',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    success: function (res) {
+                        if (res.code === 200) {
+                            location.href = "@ViewBag.ReturnUrl";
+                        } else
+                            layer.alert(res.message, { title: '错误提示' });
+                    },
+                    error: function (err) {
+                        layer.msg("连接服务器失败！");
+                    }
+                });
+            });
+        });
+        
+    </script>
+    <div style="text-align:center;">
+        <p>49os</p>
+    </div>
+</body>
+</html>

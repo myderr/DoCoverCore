@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DoCover</name>
+    </assembly>
+    <members>
+        <member name="M:DoCover.Common.Extension.GetDescription(System.Enum)">
+            <summary>
+            获取枚举的中文描述
+            </summary>
+            <param name="obj"></param>
+            <returns>没有描述返回空字符串</returns>
+        </member>
+        <member name="M:DoCover.Common.Extension.SetAppSettingValue``1(``0,System.String)">
+            <summary>
+            设置appsetting值
+            </summary>
+            <typeparam name="T">类型</typeparam>
+            <param name="node">节点</param>
+            <param name="appSettingsJsonFilePath">路径。默认为appsettings.json</param>
+            <returns>是否设置成功</returns>
+        </member>
+        <member name="M:DoCover.Common.Global.GetMysqlConn(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            获取mysql链接字符串
+            </summary>
+            <param name="ip"></param>
+            <param name="port"></param>
+            <param name="database"></param>
+            <param name="userId"></param>
+            <param name="pwd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Common.Global.GetSqlServerConn(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            获取SqlServer链接字符串
+            </summary>
+            <param name="ip"></param>
+            <param name="port"></param>
+            <param name="database"></param>
+            <param name="userId"></param>
+            <param name="pwd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Common.Global.GetPgSqlConn(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            获取PgSql链接字符串
+            </summary>
+            <param name="ip"></param>
+            <param name="port"></param>
+            <param name="database"></param>
+            <param name="userId"></param>
+            <param name="pwd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Common.Global.GetOracleConn(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            获取Oracle链接字符串
+            </summary>
+            <param name="ip"></param>
+            <param name="port"></param>
+            <param name="database"></param>
+            <param name="userId"></param>
+            <param name="pwd"></param>
+            <param name="servername"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DoCover.Common.RsaForJava.Rsakey">
+            <summary>
+            KEY 结构体
+            </summary>
+        </member>
+        <member name="P:DoCover.Common.RsaForJava.Rsakey.PublicKey">
+            <summary>
+            公钥
+            </summary>
+        </member>
+        <member name="P:DoCover.Common.RsaForJava.Rsakey.PrivateKey">
+            <summary>
+            私钥
+            </summary>
+        </member>
+        <member name="M:DoCover.Common.RsaForJava.GetKey">
+            <summary>
+            获取密钥对
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Common.RsaForJava.GetPublicKeyParameter(System.String)">
+            <summary>
+            公钥参数
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Common.RsaForJava.GetPrivateKeyParameter(System.String)">
+            <summary>
+            私钥参数
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Common.RsaForJava.EncryptByPrivateKey(System.String,System.String)">
+            <summary>
+            私钥加密
+            </summary>
+            <param name="s"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Common.RsaForJava.EncryptByPublicKey(System.String,System.String)">
+            <summary>
+            公钥加密
+            </summary>
+            <param name="s"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Common.RsaForJava.DecryptByPrivateKey(System.String,System.String)">
+            <summary>
+            私钥解密
+            </summary>
+            <param name="s"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Common.RsaForJava.DecryptByPublicKey(System.String,System.String)">
+            <summary>
+            公钥解密
+            </summary>
+            <param name="s"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DoCover.Controllers.UserController">
+            <summary>
+            用户接口
+            </summary>
+        </member>
+        <member name="M:DoCover.Controllers.UserController.Get">
+            <summary>
+            获取文本
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Controllers.UserController.Sum(System.Int32,System.Int32)">
+            <summary>
+            两数相加
+            </summary>
+            <param name="num1">第一个数</param>
+            <param name="num2">第二个数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Controllers.UserController.Subtract(DoCover.Controllers.Param)">
+            <summary>
+            两数相减
+            </summary>
+            <param name="param">参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:DoCover.Controllers.Param">
+            <summary>
+            参数
+            </summary>
+        </member>
+        <member name="P:DoCover.Controllers.Param.num1">
+            <summary>
+            第一个数
+            </summary>
+        </member>
+        <member name="P:DoCover.Controllers.Param.num2">
+            <summary>
+            第二个数
+            </summary>
+        </member>
+        <member name="M:DoCover.Entitys.DbSet`1.GetValueByKeyId(System.Object)">
+            <summary>
+            主键查询
+            </summary>
+            <param name="keyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Entitys.DbSet`1.Updateable">
+            <summary>
+            修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DoCover.Entitys.DbSet`1.Sql(System.String)">
+            <summary>
+            执行SQL语句
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="P:DoCover.Entitys.Order.OrderId">
+            <summary>
+            订单id-年月日时分秒随机6位
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.Status">
+            <summary>
+            状态，0-订单关闭，1-订单完成，2-订单未处理
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.CreateUserId">
+            <summary>
+            创建者id-前台
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.FinishUserId">
+            <summary>
+            接单者id-美工
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.CustName">
+            <summary>
+            顾客名字
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.Price">
+            <summary>
+            订单价格
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.Type">
+            <summary>
+            订单类型
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.Title">
+            <summary>
+            订单标题
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.Content">
+            <summary>
+            订单主体内容
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.SpeciFiedTime">
+            <summary>
+            规定时间 -秒
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.FinishTime">
+            <summary>
+            完成时间
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.CustEmail">
+            <summary>
+            联系方式
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Order.Results">
+            <summary>
+            完成后的结果
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Setting.SetId">
+            <summary>
+            设置表ID
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Setting.Key">
+            <summary>
+            设置项
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Setting.Value">
+            <summary>
+            设置值
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.Setting.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="F:DoCover.Entitys.EnumSet.WebsiteName">
+            <summary>
+            网站名称
+            </summary>
+        </member>
+        <member name="F:DoCover.Entitys.EnumSet.WebsiteAdminEmail">
+            <summary>
+            站长邮箱
+            </summary>
+        </member>
+        <member name="F:DoCover.Entitys.EnumSet.PublicKey">
+            <summary>
+            网站公钥
+            </summary>
+        </member>
+        <member name="F:DoCover.Entitys.EnumSet.PrivateKey">
+            <summary>
+            网站私钥
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.UserId">
+            <summary>
+            唯一标识符
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.Name">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.Pwd">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.Type">
+            <summary>
+            类型：0-管理员，1-美工，2-前台
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.Qq">
+            <summary>
+            QQ号码
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.Email">
+            <summary>
+            电子邮箱
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.Phone">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.Status">
+            <summary>
+            状态：0-封禁，1-正常
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.Portrait">
+            <summary>
+            头像地址
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.RegTime">
+            <summary>
+            注册时间
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.RegIp">
+            <summary>
+            注册ip
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.LastLoginTime">
+            <summary>
+            最后登录时间
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.LastLoginIp">
+            <summary>
+            最后登录ip
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.LastUpdateTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.LastUpdateIp">
+            <summary>
+            最后修改ip
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.LoginNum">
+            <summary>
+            登录次数
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.Money">
+            <summary>
+            金钱数量
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.RankScores">
+            <summary>
+            等级经验/积分
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.Random">
+            <summary>
+            唯一uuid
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.Remark">
+            <summary>
+            封禁备注
+            </summary>
+        </member>
+        <member name="P:DoCover.Entitys.User.Extend">
+            <summary>
+            拓展
+            </summary>
+        </member>
+        <member name="T:DoCover.Enum.ErrorCode">
+            <summary>
+            错误对照码
+            </summary>
+        </member>
+        <member name="F:DoCover.Enum.ErrorCode.E1_15100">
+            <summary>
+            未知错误
+            </summary>
+        </member>
+        <member name="F:DoCover.Enum.ErrorCode.E2_20100">
+            <summary>
+            权限不足，无法访问。
+            </summary>
+        </member>
+        <member name="F:DoCover.Enum.ErrorCode.E2_21101">
+            <summary>
+            用户不存在。
+            </summary>
+        </member>
+        <member name="F:DoCover.Enum.ErrorCode.E2_21102">
+            <summary>
+            用户名重复。
+            </summary>
+        </member>
+        <member name="F:DoCover.Enum.ErrorCode.E2_21103">
+            <summary>
+            当前密码不正确。
+            </summary>
+        </member>
+        <member name="F:DoCover.Enum.ErrorCode.E2_21104">
+            <summary>
+            数据库选择不正确。
+            </summary>
+        </member>
+        <member name="F:DoCover.Enum.ErrorCode.E2_22101">
+            <summary>
+            该用户有关联订单，推荐使用禁用功能。(禁止删除该用户)
+            </summary>
+        </member>
+        <member name="F:DoCover.Enum.ErrorCode.E2_25100">
+            <summary>
+            参数错误
+            </summary>
+        </member>
+        <member name="P:DoCover.Models.DoOptions.DbType">
+            <summary>
+            数据库类型
+            </summary>
+        </member>
+        <member name="P:DoCover.Models.DoOptions.Conn">
+            <summary>
+            数据库连接串
+            </summary>
+        </member>
+        <member name="P:DoCover.Models.DoOptions.TablePrefix">
+            <summary>
+            表前缀
+            </summary>
+        </member>
+        <member name="P:DoCover.Models.Response.code">
+            <summary>
+            操作状态码，详细参考返回代码对照表
+            </summary>
+        </member>
+        <member name="P:DoCover.Models.Response.message">
+            <summary>
+            操作消息，详细参考返回代码对照表
+            </summary>
+        </member>
+    </members>
+</doc>

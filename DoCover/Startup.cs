@@ -1,6 +1,8 @@
 using DoCover.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,9 +25,16 @@ namespace DoCover
         public void ConfigureServices(IServiceCollection services)
         {
             //mvc中间件
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation()
+                .AddNewtonsoftJson();
             services.Configure<DoOptions>(Configuration.GetSection("DoOptions"));
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
+                AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o =>
+                {
+                    o.LoginPath = new PathString("/User/Login");
+                    o.ReturnUrlParameter = "backurl";
+                });
             services.AddHttpsRedirection(options =>
             {
                 //options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
@@ -49,7 +58,10 @@ namespace DoCover
             }
             
             app.UseHttpsRedirection();
+            //使用静态文件
             app.UseStaticFiles();
+            //使用身份验证服务
+            app.UseAuthentication();
 
             app.UseRouting();
 

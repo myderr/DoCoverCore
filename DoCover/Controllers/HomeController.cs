@@ -1,16 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using DoCover.Entitys;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using DoCover.Models;
-using Microsoft.CodeAnalysis.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
 namespace DoCover.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IOptionsSnapshot<DoOptions> _options;

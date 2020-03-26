@@ -1,5 +1,3 @@
-using System;
-
 namespace DoCover.Models
 {
     public class ErrorViewModel

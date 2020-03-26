@@ -109,7 +109,7 @@ namespace DoCover.Controllers
             }
             catch (Exception ex)
             {
-                return Json(new Response(ErrorCode.E1_15100) { message = ex.Message });
+                return Json(new Response(ErrorCode.E1_15100,ex.Message));
             }
         }
     }

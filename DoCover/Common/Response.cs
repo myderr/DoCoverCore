@@ -1,8 +1,8 @@
 ﻿// ReSharper disable InconsistentNaming
-using DoCover.Common;
+
 using DoCover.Enum;
 
-namespace DoCover.Models
+namespace DoCover.Common
 {
     public class Response
     {
@@ -22,6 +22,12 @@ namespace DoCover.Models
         {
             code = (int)errorCode;
             message = errorCode.GetDescription();
+        }
+
+        public Response(ErrorCode errorCode,string message)
+        {
+            code = (int)errorCode;
+            this.message = message;
         }
 
         public Response()
