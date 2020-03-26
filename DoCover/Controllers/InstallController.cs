@@ -37,7 +37,7 @@ namespace DoCover.Controllers
             {
                 try
                 {
-                    var dbContext = new MysqlContext(_options);
+                    var dbContext = new DbContext(_options);
                     string publicKey = dbContext.Setting.GetValueByKeyId(EnumSet.PublicKey).Value;
                     ViewBag.PublicKey = publicKey;
                 }
@@ -79,7 +79,7 @@ namespace DoCover.Controllers
                 else
                     _options.Value.SetAppSettingValue();
 
-                var dbContext = new MysqlContext(_options);
+                var dbContext = new DbContext(_options);
                 await dbContext.InitDatabase();
                 _progress = 2;
                 return Json(new Response(200,"创建数据库成功"));
@@ -94,7 +94,7 @@ namespace DoCover.Controllers
         {
             try
             {
-                var dbContext = new MysqlContext(_options);
+                var dbContext = new DbContext(_options);
                 List<Setting> sets = new List<Setting>()
                 {
                     new Setting(EnumSet.WebsiteName,title),

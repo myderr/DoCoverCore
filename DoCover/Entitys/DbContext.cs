@@ -9,11 +9,11 @@ using SqlSugar;
 
 namespace DoCover.Entitys
 {
-    public class MysqlContext
+    public class DbContext
     {
         private readonly IOptionsSnapshot<DoOptions> _options;
 
-        public MysqlContext(IOptionsSnapshot<DoOptions> options)
+        public DbContext(IOptionsSnapshot<DoOptions> options)
         {
             _options = options;
             DbType dbType = DbType.MySql;
