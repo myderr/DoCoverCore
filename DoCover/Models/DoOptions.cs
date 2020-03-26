@@ -2,6 +2,12 @@
 {
     public class DoOptions
     {
+
+        /// <summary>
+        /// 是否安装
+        /// </summary>
+        public bool Installed { get; set; }
+
         /// <summary>
         /// 数据库类型
         /// </summary>

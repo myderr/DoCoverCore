@@ -1,3 +1,4 @@
+using DoCover.Filter;
 using DoCover.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -25,10 +26,11 @@ namespace DoCover
         public void ConfigureServices(IServiceCollection services)
         {
             //mvcÖÐ¼ä¼þ
-            services.AddControllersWithViews().AddRazorRuntimeCompilation()
+            services.AddControllersWithViews(configure=>configure.Filters.Add(typeof(InstallFilterAttribute)))
+                .AddRazorRuntimeCompilation()
                 .AddNewtonsoftJson();
             services.Configure<DoOptions>(Configuration.GetSection("DoOptions"));
-
+            
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
                 AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o =>
                 {

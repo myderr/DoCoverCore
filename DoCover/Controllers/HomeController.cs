@@ -10,13 +10,13 @@ namespace DoCover.Controllers
     public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IOptionsSnapshot<DoOptions> _options;
+        private readonly DoOptions _options;
         private readonly IConfiguration _configuration;
 
         public HomeController(ILogger<HomeController> logger, IOptionsSnapshot<DoOptions> options, IConfiguration configuration)
         {
             _logger = logger;
-            _options = options;
+            _options = options.Value;
             _configuration = configuration;
         }
 

@@ -19,7 +19,7 @@ namespace DoCover.Controllers
     public class InstallController : Controller
     {
         private readonly ILogger<InstallController> _logger;
-        private readonly IOptionsSnapshot<DoOptions> _options;
+        private readonly DoOptions _options;
         private readonly IWebHostEnvironment _evn;
 
         private static int _progress = 1;
@@ -27,7 +27,7 @@ namespace DoCover.Controllers
         public InstallController(ILogger<InstallController> logger,IOptionsSnapshot<DoOptions> options, IWebHostEnvironment evn)
         {
             _logger = logger;
-            _options = options;
+            _options = options.Value;
             _evn = evn;
         }
         public IActionResult Index(int progress = 1)
@@ -64,20 +64,20 @@ namespace DoCover.Controllers
             if (db <= 0 || db >= 4) return Json(new Response(ErrorCode.E2_21104));
             try
             {
-                _options.Value.Conn = db switch
+                _options.Conn = db switch
                 {
                     1 => Global.GetMysqlConn(ip, port, database, userId, pwd),
                     2 => Global.GetSqlServerConn(ip, port, database, userId, pwd),
                     3 => Global.GetPgSqlConn(ip, port, database, userId, pwd),
-                    _ => _options.Value.Conn
+                    _ => _options.Conn
                 };
 
-                _options.Value.DbType = db;
-                _options.Value.TablePrefix = bef;
+                _options.DbType = db;
+                _options.TablePrefix = bef;
                 if (_evn.IsDevelopment())
-                    _options.Value.SetAppSettingValue(Directory.GetCurrentDirectory() + "\\appsettings.json");
+                    _options.SetAppSettingValue(Directory.GetCurrentDirectory() + "\\appsettings.json");
                 else
-                    _options.Value.SetAppSettingValue();
+                    _options.SetAppSettingValue();
 
                 var dbContext = new DbContext(_options);
                 await dbContext.InitDatabase();

@@ -11,13 +11,13 @@ namespace DoCover.Entitys
 {
     public class DbContext
     {
-        private readonly IOptionsSnapshot<DoOptions> _options;
+        private readonly DoOptions _options;
 
-        public DbContext(IOptionsSnapshot<DoOptions> options)
+        public DbContext(DoOptions options)
         {
             _options = options;
             DbType dbType = DbType.MySql;
-            switch (_options.Value.DbType)
+            switch (_options.DbType)
             {
                 case 1:
                     dbType = DbType.MySql;
@@ -34,17 +34,17 @@ namespace DoCover.Entitys
             }
             Db = new SqlSugarClient(new ConnectionConfig()
             {
-                ConnectionString = _options.Value.Conn,
+                ConnectionString = _options.Conn,
                 DbType = dbType,
                 InitKeyType = InitKeyType.Attribute, //从特性读取主键和自增列信息
                 IsAutoCloseConnection = true, //开启自动释放模式和EF原理一样我就不多解释了
             });
             MappingTableList map = new MappingTableList
             {
-                {typeof(User).Name, _options.Value.TablePrefix + typeof(User).Name + "s"},
-                {typeof(Setting).Name, _options.Value.TablePrefix + typeof(Setting).Name + "s"},
-                {typeof(Order).Name, _options.Value.TablePrefix + typeof(Order).Name + "s"},
-                {typeof(Setting).Name, _options.Value.TablePrefix + typeof(Setting).Name + "s"}
+                {typeof(User).Name, _options.TablePrefix + typeof(User).Name + "s"},
+                {typeof(Setting).Name, _options.TablePrefix + typeof(Setting).Name + "s"},
+                {typeof(Order).Name, _options.TablePrefix + typeof(Order).Name + "s"},
+                {typeof(Setting).Name, _options.TablePrefix + typeof(Setting).Name + "s"}
             };
             Db.MappingTables = map;
             //用来打印Sql方便你调式    
