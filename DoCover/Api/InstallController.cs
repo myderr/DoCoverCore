@@ -24,7 +24,7 @@ namespace DoCover.Api
         /// <summary>
         /// 安装步骤
         /// </summary>
-        private static int _progress = 1;
+        public static int _progress = 1;
 
         public InstallController(IOptionsSnapshot<DoOptions> options, IWebHostEnvironment evn)
         {

@@ -22,8 +22,6 @@ namespace DoCover.Controllers
         private readonly DoOptions _options;
         private readonly IWebHostEnvironment _evn;
 
-        private static int _progress = 1;
-
         public InstallController(ILogger<InstallController> logger,IOptionsSnapshot<DoOptions> options, IWebHostEnvironment evn)
         {
             _logger = logger;
@@ -33,7 +31,7 @@ namespace DoCover.Controllers
         public IActionResult Index(int progress = 1)
         {
             ViewBag.Progress = progress;
-            if (_progress > 1)//大于第一步，有公钥了
+            if (Api.InstallController._progress > 1)//大于第一步，有公钥了
             {
                 try
                 {
@@ -44,7 +42,7 @@ namespace DoCover.Controllers
                 catch { }
             }
 
-            if (_progress >= progress)
+            if (Api.InstallController._progress >= progress)
                 return View();
             else
                 return RedirectToAction("Index", new { progress = _progress });
