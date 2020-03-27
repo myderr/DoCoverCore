@@ -42,9 +42,9 @@ namespace DoCover.Enum
         E2_21103 = 21103,
 
         /// <summary>
-        /// 数据库选择不正确。
+        /// 数据库类型选择不正确。
         /// </summary>
-        [Description("数据库选择不正确")]
+        [Description("数据库类型选择不正确")]
         E2_21104 = 21104,
 
         /// <summary>

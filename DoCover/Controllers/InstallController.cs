@@ -49,69 +49,6 @@ namespace DoCover.Controllers
             else
                 return RedirectToAction("Index", new { progress = _progress });
         }
-
-        public IActionResult Setup()
-        {
-            if (_progress >= 2)
-                return View();
-            else
-                return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> LinkDb(int db,string ip, string port, string database, string userId, string pwd,string bef)
-        {
-            if (db <= 0 || db >= 4) return Json(new Response(ErrorCode.E2_21104));
-            try
-            {
-                _options.Conn = db switch
-                {
-                    1 => Global.GetMysqlConn(ip, port, database, userId, pwd),
-                    2 => Global.GetSqlServerConn(ip, port, database, userId, pwd),
-                    3 => Global.GetPgSqlConn(ip, port, database, userId, pwd),
-                    _ => _options.Conn
-                };
-
-                _options.DbType = db;
-                _options.TablePrefix = bef;
-                if (_evn.IsDevelopment())
-                    _options.SetAppSettingValue(Directory.GetCurrentDirectory() + "\\appsettings.json");
-                else
-                    _options.SetAppSettingValue();
-
-                var dbContext = new DbContext(_options);
-                await dbContext.InitDatabase();
-                _progress = 2;
-                return Json(new Response(200,"创建数据库成功"));
-            }
-            catch (Exception ex)
-            {
-                return Json(new Response(ErrorCode.E1_15100) { message = ex.Message });
-            }
-        }
-
-        public async Task<IActionResult> SetInfo(string title,string adminName,string adminPwd,string adminEmail)
-        {
-            try
-            {
-                var dbContext = new DbContext(_options);
-                List<Setting> sets = new List<Setting>()
-                {
-                    new Setting(EnumSet.WebsiteName,title),
-                    new Setting(EnumSet.WebsiteAdminEmail,adminEmail)
-                };
-                await dbContext.Setting.AsUpdateable(sets)
-                    .ExecuteCommandAsync();
-                await dbContext.User.AsUpdateable(new User() { UserId = 1, Name = adminName, Pwd = adminPwd, Type = 0 })
-                    .ExecuteCommandAsync();
-                _progress = 3;
-                return Json(new Response(200, "设置成功"));
-            }
-            catch (Exception ex)
-            {
-                return Json(new Response(ErrorCode.E1_15100,ex.Message));
-            }
-        }
     }
 
 }

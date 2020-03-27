@@ -64,14 +64,14 @@
                             <fieldset class="layui-elem-field layui-field-title">
                                 <legend>配置数据库</legend>
                             </fieldset>
-                            <form class="layui-form" action="@Url.Action("LinkDb")">
+                            <form class="layui-form" action="/Api/Install/CreateDb">
                                 <div class="layui-row">
                                     <div class="layui-form-item">
                                         <div class="layui-col-xs12 layui-col-md2">
-                                            <label class="layui-form-label required">选择数据库</label>
+                                            <label class="layui-form-label required">选择数据库类型</label>
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
-                                            <select lay-verify="required" name="db" lay-filter="page1_db">
+                                            <select lay-verify="required" name="DbType" lay-filter="page1_db">
                                                 <option value="1" selected="selected">Mysql(推荐)</option>
                                                 <option value="2">SqlServer</option>
                                                 <option value="3">PostgreSQL</option>
@@ -88,7 +88,7 @@
                                             <label class="layui-form-label required">数据库名</label>
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
-                                            <input type="text" name="database" value="docover" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+                                            <input type="text" name="Database" value="docover" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
 
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
@@ -102,7 +102,7 @@
                                             <label class="layui-form-label required">用户名</label>
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
-                                            <input type="text" name="userId" value="root" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                            <input type="text" name="UserId" value="root" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
                                             <div class="layui-form-mid layui-word-aux"> 您的数据库用户名。</div>
@@ -115,7 +115,7 @@
                                             <label class="layui-form-label required">密码</label>
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
-                                            <input type="password" name="pwd" value="root" lay-verify="required" placeholder="请输入" autocomplete="new-password" class="layui-input">
+                                            <input type="password" name="Password" value="root" lay-verify="required" placeholder="请输入" autocomplete="new-password" class="layui-input">
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
                                             <div class="layui-form-mid layui-word-aux"> 您的数据库密码。</div>
@@ -128,7 +128,7 @@
                                             <label class="layui-form-label required">数据库主机</label>
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
-                                            <input type="text" name="ip" value="localhost" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                            <input type="text" name="Host" value="localhost" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
                                             <div class="layui-form-mid layui-word-aux"> 您通常可以从网站服务提供商处得到信息。</div>
@@ -141,7 +141,7 @@
                                             <label class="layui-form-label required">数据库端口</label>
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
-                                            <input type="text" id="port" name="port" value="3306" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                            <input type="text" id="port" name="Port" value="3306" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
                                             <div class="layui-form-mid layui-word-aux"><span id="port-text"> Mysql的默认端口为3306</span></div>
@@ -154,7 +154,7 @@
                                             <label class="layui-form-label">表前缀</label>
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
-                                            <input type="text" name="bef" value="do_" placeholder="请输入" autocomplete="off" class="layui-input">
+                                            <input type="text" name="TablePrefix" value="do_" placeholder="请输入" autocomplete="off" class="layui-input">
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
                                             <div class="layui-form-mid layui-word-aux"> 如果您希望在同一个数据库安装多个DoCover，请修改前缀。</div>
@@ -183,14 +183,14 @@
                             <h2>需要信息</h2>
                             <fieldset class="layui-elem-field layui-field-title"></fieldset>
                             <p>您需要填写一些基本信息。无需担心填错，这些信息以后可以再次修改。</p>
-                            <form class="layui-form" action="@Url.Action("SetInfo")">
+                            <form class="layui-form" action="/Api/Install/SetInfo">
                                 <div class="layui-row">
                                     <div class="layui-form-item">
                                         <div class="layui-col-xs12 layui-col-md2">
                                             <label class="layui-form-label required">站点标题</label>
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
-                                            <input type="text" name="title" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+                                            <input type="text" name="WebsiteName" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
                                             <div class="layui-form-mid layui-word-aux"> 您的站点所展示的标题</div>
@@ -203,7 +203,7 @@
                                             <label class="layui-form-label required">用户名</label>
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
-                                            <input type="text" name="adminName" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+                                            <input type="text" name="AdminName" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
                                             <div class="layui-form-mid layui-word-aux"> 您的账号具有管理员权限</div>
@@ -216,7 +216,7 @@
                                             <label class="layui-form-label required">密码</label>
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
-                                            <input type="text" name="adminPwd" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+                                            <input type="text" name="AdminPassword" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
                                             <div class="layui-form-mid layui-word-aux"> 重要： 您将需要此密码来登录，请牢记。</div>
@@ -229,7 +229,7 @@
                                             <label class="layui-form-label required">电子邮箱</label>
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
-                                            <input type="text" name="adminEmail" lay-verify="email" autocomplete="off" placeholder="请输入" class="layui-input">
+                                            <input type="text" name="AdminEmail" lay-verify="email" autocomplete="off" placeholder="请输入" class="layui-input">
                                         </div>
                                         <div class="layui-col-xs12 layui-col-md5">
                                             <div class="layui-form-mid layui-word-aux"> 请仔细检查电子邮件地址后再继续。</div>
@@ -315,10 +315,12 @@
             form.on('submit(page1_next)', function (data) {
                 var action = $(data.form).attr("action"), button = $(data.elem);
                 var index = layer.load();
+                var info = data.field;
                 $.ajax({
                     url: action,
                     type: "post",
-                    data: data.field,
+                    contentType: 'application/json',
+                    data: JSON.stringify(info),
                     success: function (res) {
                         layer.close(index);
                         if (res.code === 200)
@@ -345,7 +347,8 @@
                 $.ajax({
                     url: action,
                     type: "post",
-                    data: info,
+                    contentType: 'application/json',
+                    data: JSON.stringify(info),
                     success: function (res) {
                         layer.close(index);
                         if (res.code === 200)
@@ -365,10 +368,12 @@
             form.on('submit(page3_next)', function (data) {
                 var action = $(data.form).attr("action"), button = $(data.elem);
                 var index = layer.load();
+                var info = data.field;
                 $.ajax({
                     url: action,
                     type: "post",
-                    data: data.field,
+                    contentType: 'application/json',
+                    data: JSON.stringify(info),
                     success: function (res) {
                         layer.close(index);
                         if (res.code === 200)
