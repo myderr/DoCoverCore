@@ -81,9 +81,14 @@ namespace DoCover.Api
                 };
                 await dbContext.Setting.AsUpdateable(sets)
                     .ExecuteCommandAsync();
-                await dbContext.User.AsUpdateable(new User() { UserId = 1, Name = req.AdminName, Pwd = req.AdminPassword, Type = 0 })
+                await dbContext.User.AsUpdateable(new User() { UserId = 1000, Name = req.AdminName, Pwd = req.AdminPassword, Type = 0 })
                     .ExecuteCommandAsync();
                 _progress = 3;
+                _options.Installed = true;
+                if (_evn.IsDevelopment())
+                    _options.SetAppSettingValue(Directory.GetCurrentDirectory() + "\\appsettings.json");
+                else
+                    _options.SetAppSettingValue();
                 return Ok(new Response(200, "设置成功"));
             }
             catch (Exception ex)

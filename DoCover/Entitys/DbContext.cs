@@ -61,8 +61,11 @@ namespace DoCover.Entitys
         {
             Db.DbMaintenance.CreateDatabase();
             Db.CodeFirst.InitTables(typeof(User), typeof(Order), typeof(Setting));
+
             if (!this.User.IsAny(m => true))
             {
+                string userTableName = Db.EntityMaintenance.GetTableName<User>();
+                await Db.Ado.ExecuteCommandAsync($"ALTER TABLE {userTableName} AUTO_INCREMENT = 1000;");
                 await User.AsInsertable(new User() { Name = "admin", Pwd = "admin", Type = 0 })
                     .ExecuteCommandAsync();
             }
@@ -79,7 +82,7 @@ namespace DoCover.Entitys
                     switch (set)
                     {
                         case EnumSet.WebsiteName:
-                            value = "才几美工系统";
+                            value = "xx系统";
                             break;
                         case EnumSet.WebsiteAdminEmail:
                             value = "admin@49os.com";

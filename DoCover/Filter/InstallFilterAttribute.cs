@@ -18,6 +18,7 @@ namespace DoCover.Filter
             string controller = context.RouteData.Values["Controller"].ToString();
             string action = context.RouteData.Values["Action"].ToString();
 
+            //未安装的跳转
             if (!_options.Installed && controller != "Install")
             {
                 context.Result = new RedirectToActionResult("Index", "Install", new { });

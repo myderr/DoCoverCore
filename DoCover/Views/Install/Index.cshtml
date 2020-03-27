@@ -250,42 +250,169 @@
                                 </div>
                             </form>
                         </div>
-
                         break;
                     }
                 case 3:
                     {
                         <div class="layui-col-xs12 layui-col-md8 layui-col-md-offset2">
-                            <div class="layui-form-item">
-                                <div class="layui-btn-container">
-                                    <div class="layui-row">
-                                        <div class="layui-col-md4" style="text-align: left">
-                                            <a href="?progress=2" class="layui-btn" lay-submit="" lay-filter="page2_previous">上一步</a>
+                            <fieldset class="layui-elem-field layui-field-title">
+                                <legend>设置资料</legend>
+                            </fieldset>
+                            <h2>欢迎</h2>
+                            <fieldset class="layui-elem-field layui-field-title"></fieldset>
+                            <p>欢迎使用DoCover安装程序！请简单地填写下面的表格，来开始使用这个系统。</p>
+
+                            <h2>需要信息</h2>
+                            <fieldset class="layui-elem-field layui-field-title"></fieldset>
+                            <p>您需要填写一些基本信息。无需担心填错，这些信息以后可以再次修改。</p>
+                            <form class="layui-form" action="/Api/Install/SetInfo">
+                                <div class="layui-row">
+                                    <div class="layui-form-item">
+                                        <div class="layui-col-xs12 layui-col-md2">
+                                            <label class="layui-form-label required">站点标题</label>
                                         </div>
-                                        <div class="layui-col-md4 layui-col-md-offset4" style="text-align: right">
-                                            <button class="layui-btn" lay-submit="" lay-filter="page2_next">下一步</button>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <input type="text" name="WebsiteName" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <div class="layui-form-mid layui-word-aux"> 您的站点所展示的标题</div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="layui-row">
+                                    <div class="layui-form-item">
+                                        <div class="layui-col-xs12 layui-col-md2">
+                                            <label class="layui-form-label required">用户名</label>
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <input type="text" name="AdminName" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <div class="layui-form-mid layui-word-aux"> 您的账号具有管理员权限</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-row">
+                                    <div class="layui-form-item">
+                                        <div class="layui-col-xs12 layui-col-md2">
+                                            <label class="layui-form-label required">密码</label>
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <input type="text" name="AdminPassword" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <div class="layui-form-mid layui-word-aux"> 重要： 您将需要此密码来登录，请牢记。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-row">
+                                    <div class="layui-form-item">
+                                        <div class="layui-col-xs12 layui-col-md2">
+                                            <label class="layui-form-label required">电子邮箱</label>
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <input type="text" name="AdminEmail" lay-verify="email" autocomplete="off" placeholder="请输入" class="layui-input">
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <div class="layui-form-mid layui-word-aux"> 请仔细检查电子邮件地址后再继续。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-btn-container">
+                                        <div class="layui-row">
+                                            <div class="layui-col-md4" style="text-align: left">
+                                                <a href="?progress=1" class="layui-btn" lay-filter="page2_previous">上一步</a>
+                                            </div>
+                                            <div class="layui-col-md4 layui-col-md-offset4" style="text-align: right">
+                                                <button class="layui-btn" lay-submit="" lay-filter="page2_next">下一步</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         break;
                     }
                 case 4:
                     {
                         <div class="layui-col-xs12 layui-col-md8 layui-col-md-offset2">
-                            <div class="layui-form-item">
-                                <div class="layui-btn-container">
-                                    <div class="layui-row">
-                                        <div class="layui-col-md4" style="text-align: left">
-                                            <a href="?progress=3" class="layui-btn" lay-submit="" lay-filter="page2_previous">上一步</a>
+                            <fieldset class="layui-elem-field layui-field-title">
+                                <legend>设置资料</legend>
+                            </fieldset>
+                            <h2>欢迎</h2>
+                            <fieldset class="layui-elem-field layui-field-title"></fieldset>
+                            <p>欢迎使用DoCover安装程序！请简单地填写下面的表格，来开始使用这个系统。</p>
+
+                            <h2>需要信息</h2>
+                            <fieldset class="layui-elem-field layui-field-title"></fieldset>
+                            <p>您需要填写一些基本信息。无需担心填错，这些信息以后可以再次修改。</p>
+                            <form class="layui-form" action="/Api/Install/SetInfo">
+                                <div class="layui-row">
+                                    <div class="layui-form-item">
+                                        <div class="layui-col-xs12 layui-col-md2">
+                                            <label class="layui-form-label required">站点标题</label>
                                         </div>
-                                        <div class="layui-col-md4 layui-col-md-offset4" style="text-align: right">
-                                            <button class="layui-btn" lay-submit="" lay-filter="page2_next">下一步</button>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <input type="text" name="WebsiteName" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <div class="layui-form-mid layui-word-aux"> 您的站点所展示的标题</div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="layui-row">
+                                    <div class="layui-form-item">
+                                        <div class="layui-col-xs12 layui-col-md2">
+                                            <label class="layui-form-label required">用户名</label>
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <input type="text" name="AdminName" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <div class="layui-form-mid layui-word-aux"> 您的账号具有管理员权限</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-row">
+                                    <div class="layui-form-item">
+                                        <div class="layui-col-xs12 layui-col-md2">
+                                            <label class="layui-form-label required">密码</label>
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <input type="text" name="AdminPassword" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input">
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <div class="layui-form-mid layui-word-aux"> 重要： 您将需要此密码来登录，请牢记。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-row">
+                                    <div class="layui-form-item">
+                                        <div class="layui-col-xs12 layui-col-md2">
+                                            <label class="layui-form-label required">电子邮箱</label>
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <input type="text" name="AdminEmail" lay-verify="email" autocomplete="off" placeholder="请输入" class="layui-input">
+                                        </div>
+                                        <div class="layui-col-xs12 layui-col-md5">
+                                            <div class="layui-form-mid layui-word-aux"> 请仔细检查电子邮件地址后再继续。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-btn-container">
+                                        <div class="layui-row">
+                                            <div class="layui-col-md4" style="text-align: left">
+                                                <a href="?progress=1" class="layui-btn" lay-filter="page2_previous">上一步</a>
+                                            </div>
+                                            <div class="layui-col-md4 layui-col-md-offset4" style="text-align: right">
+                                                <button class="layui-btn" lay-submit="" lay-filter="page2_next">下一步</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         break;
                     }
@@ -324,7 +451,7 @@
                     success: function (res) {
                         layer.close(index);
                         if (res.code === 200)
-                            layer.msg(res.message, { time: 1000 }, function () {
+                            layer.msg(res.message, { time: 1500 }, function () {
                                 location.href = "/Install/Index?progress=2";
                             });
                         else
@@ -352,8 +479,9 @@
                     success: function (res) {
                         layer.close(index);
                         if (res.code === 200)
-                            layer.msg(res.message, { time: 1000 }, function () {
-                                location.href = "/Install/Index?progress=3";
+                            layer.msg(res.message, { time: 1500 }, function () {
+                                //location.href = "/Install/Index?progress=3";
+                                location.href = "@Url.Action("Index","Home")";
                             });
                         else
                             layer.alert(res.message, { title: '错误提示' });
@@ -377,7 +505,7 @@
                     success: function (res) {
                         layer.close(index);
                         if (res.code === 200)
-                            layer.msg(res.message, { time: 1000 }, function () {
+                            layer.msg(res.message, { time: 1500 }, function () {
                                 location.href = "/Install/Index?progress=4";
                             });
                         else

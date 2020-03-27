@@ -25,9 +25,9 @@ namespace DoCover
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //mvc中间件
+            //mvc中间件 注入全局filter
             services.AddControllersWithViews(configure=>configure.Filters.Add(typeof(InstallFilterAttribute)))
-                .AddRazorRuntimeCompilation()
+                .AddRazorRuntimeCompilation()//注入运行时编译
                 .AddNewtonsoftJson();
             services.Configure<DoOptions>(Configuration.GetSection("DoOptions"));
             

@@ -44,8 +44,7 @@ namespace DoCover.Controllers
 
             if (Api.InstallController._progress >= progress)
                 return View();
-            else
-                return RedirectToAction("Index", new { progress = _progress });
+            return RedirectToAction("Index", new { progress = Api.InstallController._progress });
         }
     }
 
