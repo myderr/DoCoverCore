@@ -16,6 +16,11 @@ namespace DoCover.Entitys
         public DbContext(DoOptions options)
         {
             _options = options;
+            InItDbConn();
+        }
+
+        private void InItDbConn()
+        {
             DbType dbType = DbType.MySql;
             switch (_options.DbType)
             {
@@ -49,11 +54,11 @@ namespace DoCover.Entitys
             Db.MappingTables = map;
             //用来打印Sql方便你调式    
             Db.Aop.OnLogExecuting = (sql, pars) =>
-                {
-                    Console.WriteLine(sql + "\r\n" +
-                                      Db.Utilities.SerializeObject(pars.ToDictionary(it => it.ParameterName,
-                                          it => it.Value)));
-                };
+            {
+                Console.WriteLine(sql + "\r\n" +
+                                  Db.Utilities.SerializeObject(pars.ToDictionary(it => it.ParameterName,
+                                      it => it.Value)));
+            };
         }
 
 

@@ -10,6 +10,7 @@ using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
+using SqlSugar;
 
 namespace DoCover.Common
 {
@@ -89,7 +90,7 @@ namespace DoCover.Common
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        private AsymmetricKeyParameter GetPublicKeyParameter(string s)
+        private static AsymmetricKeyParameter GetPublicKeyParameter(string s)
         {
             s = s.Replace("\r", "").Replace("\n", "").Replace(" ", "").Replace("-----BEGINPUBLICKEY-----", "").Replace("-----ENDPUBLICKEY-----", "");
             byte[] publicInfoByte = Convert.FromBase64String(s);
@@ -102,7 +103,7 @@ namespace DoCover.Common
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        private AsymmetricKeyParameter GetPrivateKeyParameter(string s)
+        private static AsymmetricKeyParameter GetPrivateKeyParameter(string s)
         {
             s = s.Replace("\r", "").Replace("\n", "").Replace(" ", "").Replace("-----BEGINRSAPRIVATEKEY-----", "").Replace("-----ENDRSAPRIVATEKEY-----", "");
             byte[] privateInfoByte = Convert.FromBase64String(s);
@@ -118,7 +119,7 @@ namespace DoCover.Common
         /// <param name="s"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public string EncryptByPrivateKey(string s, string key)
+        public static string EncryptByPrivateKey(string s, string key)
         {
             //非对称加密算法，加解密用  
             IAsymmetricBlockCipher engine = new Pkcs1Encoding(new RsaEngine());
@@ -144,7 +145,7 @@ namespace DoCover.Common
         /// <param name="s"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public string EncryptByPublicKey(string s, string key)
+        public static string EncryptByPublicKey(string s, string key)
         {
             //非对称加密算法，加解密用  
             IAsymmetricBlockCipher engine = new Pkcs1Encoding(new RsaEngine());
@@ -168,7 +169,7 @@ namespace DoCover.Common
         /// <param name="s"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public string DecryptByPrivateKey(string s, string key)
+        public static string DecryptByPrivateKey(string s, string key)
         {
             s = s.Replace("\r", "").Replace("\n", "").Replace(" ", "");
             //非对称加密算法，加解密用  
@@ -194,7 +195,7 @@ namespace DoCover.Common
         /// <param name="s"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public string DecryptByPublicKey(string s, string key)
+        public static string DecryptByPublicKey(string s, string key)
         {
             s = s.Replace("\r", "").Replace("\n", "").Replace(" ", "");
             //非对称加密算法，加解密用  

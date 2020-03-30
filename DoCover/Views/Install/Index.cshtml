@@ -469,7 +469,7 @@
                 var encrypt = new JSEncrypt();
                 encrypt.setPublicKey(do_publicKey);
                 var info = data.field;
-                info.adminPwd = encrypt.encrypt(info.adminPwd);
+                info.AdminPassword = encrypt.encrypt(info.AdminPassword);
                 var index = layer.load();
                 $.ajax({
                     url: action,

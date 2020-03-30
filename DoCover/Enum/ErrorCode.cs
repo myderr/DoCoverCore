@@ -48,6 +48,12 @@ namespace DoCover.Enum
         E2_21104 = 21104,
 
         /// <summary>
+        /// 账号或者密码不正确。
+        /// </summary>
+        [Description("账号或者密码不正确")]
+        E2_21105 = 21105,
+
+        /// <summary>
         /// 该用户有关联订单，推荐使用禁用功能。(禁止删除该用户)
         /// </summary>
         [Description("该用户有关联订单，推荐使用禁用功能。")]

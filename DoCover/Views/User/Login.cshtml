@@ -14,7 +14,6 @@
     <link rel="stylesheet" type="text/css" href="~/login/css/reset.css" />
 </head>
 <body>
-
     <div id="particles-js">
         <div class="login">
             <div class="login-top">
@@ -42,13 +41,19 @@
         </div>
         <div class="sk-rotating-plane"></div>
     </div>
-
+    <div style="text-align:center;">
+        <p>49os.com</p>
+    </div>
     <!-- scripts -->
     <script src="~/login/js/particles.min.js"></script>
     <script src="~/login/js/app.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/layui-src/dist/layui.js"></script>
+    <script src="~/lib/jsencrypt/dist/jsencrypt.js"></script>
     <script type="text/javascript">
+        var do_publicKey = '-----BEGIN PUBLIC KEY-----@Html.Raw(ViewBag.PublicKey)-----END PUBLIC KEY-----';
+        var encrypt = new JSEncrypt();
+        encrypt.setPublicKey(do_publicKey);
         $(function () {
             $(".password").keypress(function (e) {
                 if (e.which === 13) {
@@ -65,7 +70,7 @@
                     layer.msg('请填写正确的账号密码');
                     return;
                 }
-                var data = { Account: name, Password: pwd };
+                var data = { Account: name, Password: encrypt.encrypt(pwd) };
                 $.ajax({
                     url: '/Api/User/SignIn',
                     type: 'post',
@@ -83,10 +88,7 @@
                 });
             });
         });
-
     </script>
-    <div style="text-align:center;">
-        <p>49os.com</p>
-    </div>
+
 </body>
 </html>

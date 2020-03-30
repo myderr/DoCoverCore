@@ -7,21 +7,18 @@ using Microsoft.Extensions.Options;
 
 namespace DoCover.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : AuthController
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly DoOptions _options;
-        private readonly IConfiguration _configuration;
 
-        public HomeController(ILogger<HomeController> logger, IOptionsSnapshot<DoOptions> options, IConfiguration configuration)
+        public HomeController(ILogger<HomeController> logger, IOptionsSnapshot<DoOptions> options, IConfiguration configuration) : base(options)
         {
             _logger = logger;
-            _options = options.Value;
-            _configuration = configuration;
         }
 
         public IActionResult Index()
         {
+            _logger.LogWarning(ThisUser.Name);
             return View();
         }
 

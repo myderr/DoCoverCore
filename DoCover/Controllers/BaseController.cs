@@ -1,48 +1,40 @@
 ﻿using DoCover.Entitys;
-using DoCover.Filter;
 using DoCover.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace DoCover.Controllers
 {
     /// <summary>
-    /// 需要登录的窗体
+    /// 主体窗体，有全局资源就放这儿
     /// </summary>
-    [Authorize]
     public class BaseController : Controller
     {
-        public readonly ILogger<HomeController> _logger;
-        public readonly IConfiguration _configuration;
-        public readonly DoOptions _options;
+        private readonly DoOptions _options;
 
-        public BaseController(ILogger<HomeController> logger, IOptionsSnapshot<DoOptions> options, IConfiguration configuration)
+        public BaseController(IOptionsSnapshot<DoOptions> options)
         {
-            _logger = logger;
-            _configuration = configuration;
             _options = options.Value;
-        }
-
-        protected BaseController()
-        {
-            
+            WebsiteName ??= new DbContext(_options).Setting.GetValueByKeyId(EnumSet.WebsiteName).Value;
+            PublicKey ??= new DbContext(_options).Setting.GetValueByKeyId(EnumSet.PublicKey).Value;
         }
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            var db = new DbContext(_options);
-            ViewBag.WebsiteName = db.Setting.GetValueByKeyId(EnumSet.WebsiteName);
-            ViewBag.PublicKey = db.Setting.GetValueByKeyId(EnumSet.PublicKey);
+            ViewBag.WebsiteName = WebsiteName;
+            ViewBag.PublicKey = PublicKey;
             base.OnActionExecuting(context);
         }
 
         /// <summary>
-        /// 登录人ID
+        /// 站点名称
         /// </summary>
-        public string UserId => User.Identity?.Name;
+        public static string WebsiteName { get; private set; }
+
+        /// <summary>
+        /// 公钥
+        /// </summary>
+        public static string PublicKey { get; private set; }
     }
 }
